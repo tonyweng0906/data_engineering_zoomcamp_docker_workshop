@@ -15,6 +15,7 @@ COPY "pyproject.toml" "uv.lock" ".python-version" ./
 # Install dependencies from lock file (ensures reproducible builds)
 RUN uv sync --locked
 
-COPY pipeline.py .
+COPY ingest_data.py .
+COPY taxi_zone_lookup.csv .
 
-ENTRYPOINT ["python", "pipeline.py" ]
+ENTRYPOINT ["python", "ingest_data.py" ]
